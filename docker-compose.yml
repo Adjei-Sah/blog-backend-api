@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: blog-backend-api-db
+    volumes:
+      - blog-backend-api-db-data:/var/lib/postgresql/data
+    env_file:
+      - ./env
+
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: blog-backend-api
+    command: npm run dev
+    volumes:
+      -./:/backend-api
+    ports:
+      -"${API_PORT}:${API_PORT}"
+    depends_on:
+      - db
+
+volumes:
+  blog-backend-api-db-data

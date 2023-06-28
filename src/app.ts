@@ -1,22 +1,22 @@
-import express from 'express';
+import express, { Express, Request, Response } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
-
-require('dotenv').config();
+import 'dotenv/config';
+import 'reflect-metadata';
 
 import * as middlewares from './middlewares';
 import MessageResponse from './interfaces/MessageREsponse';
 import api from './api';
 
-const app = express();
+const app:Express = express();
 
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-app.get<{}, MessageResponse>('/', (req, res) => {
+app.get<{}, MessageResponse>('/', (req: Request, res: Response) => {
   res.json({
     message: '🧁 Blog Backend Api 🧁',
   });

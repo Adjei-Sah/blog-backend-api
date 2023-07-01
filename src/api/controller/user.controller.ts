@@ -5,7 +5,7 @@ import { validate } from 'class-validator';
 import ErrorValidator from '../../interfaces/ValidationError';
 import { LoginDTO, RegisterDTO } from '../dto/user.dto';
 import { compare } from 'bcrypt';
-import { generateAccessToken } from '../../utils/authorization';
+import { generateAccessToken } from '../../auth/auth.middlewares';
 
 export const register = async (req:Request, res: Response, next: NextFunction) => {
   try {

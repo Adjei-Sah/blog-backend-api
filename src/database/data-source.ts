@@ -1,4 +1,6 @@
 import { DataSource } from 'typeorm';
+import { User } from './entities/User';
+import { Post } from './entities/Post';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -8,4 +10,6 @@ export const AppDataSource = new DataSource({
   password: process.env.POSTGRES_PASSWORD || 'password',
   database: process.env.POSTGRES_DB || 'blog-backend-api',
   logging: process.env.ORM_LOGGING === 'true',
+  entities: [User, Post],
+  synchronize: true,
 });

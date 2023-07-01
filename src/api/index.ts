@@ -1,6 +1,7 @@
 import express from 'express';
 
-import MessageResponse from '../interfaces/MessageREsponse';
+import MessageResponse from '../interfaces/MessageResponse';
+import userRoute from './routes/user.route';
 
 const router = express.Router();
 
@@ -9,5 +10,7 @@ router.get<{}, MessageResponse>('/', (req, res) => {
     message: 'API - 👋🌍',
   });
 });
+
+router.use('/user', userRoute);
 
 export default router;

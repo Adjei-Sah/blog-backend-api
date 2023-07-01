@@ -6,7 +6,7 @@ import 'dotenv/config';
 import 'reflect-metadata';
 
 import * as middlewares from './middlewares';
-import MessageResponse from './interfaces/MessageREsponse';
+import MessageResponse from './interfaces/MessageResponse';
 import api from './api';
 
 const app:Express = express();

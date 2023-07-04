@@ -8,13 +8,12 @@ export const generateAccessToken = (payload: string | object | Buffer) => {
 };
 
 interface JwtPayload {
-  userId: number;
+  userId: string;
 }
 
 export const authenticateAccessToken = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { authorization: tokenHeader } = req.headers;
-    // const token = req.header('Authorization')?.replace('Bearer ', '');
     const token = tokenHeader?.split(' ')[1];
 
     if (!token) {

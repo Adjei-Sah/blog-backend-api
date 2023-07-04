@@ -22,3 +22,25 @@ export class CreatePostDTO {
   user!: string;
   
 }
+
+export class UpdatePostDTO {
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(3)
+  title?: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(3)
+  content?: string;
+  
+  @IsNotEmpty()
+  @IsString()
+  @MinLength(3)
+  summary?: string;
+
+  @IsNotEmpty()
+  @IsUUID()
+  user!: string;
+  
+}

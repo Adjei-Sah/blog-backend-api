@@ -7,6 +7,18 @@ import { authenticateAccessToken } from '../../auth/auth.middlewares';
 const router = Router();
 
 // Create route
-router.post<{}, MessageResponse>('/create', authenticateAccessToken, postController.create);
+router.post<{}, MessageResponse>('/', authenticateAccessToken, postController.create);
+
+// View all route
+router.get<{}, MessageResponse>('/', authenticateAccessToken, postController.viewAll);
+
+// View one route
+router.get<{}, { id: number }, MessageResponse>('/:id', authenticateAccessToken, postController.viewOne);
+
+// Update route
+router.put<{}, { id: number }, MessageResponse>('/:id', authenticateAccessToken, postController.update);
+
+// Delete route
+router.delete<{}, { id: number }, MessageResponse>('/:id', authenticateAccessToken, postController.deleteOne);
 
 export default router;
